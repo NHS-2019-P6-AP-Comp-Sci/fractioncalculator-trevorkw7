@@ -39,9 +39,21 @@ public class FracCalc {
     	input = input.substring(input.indexOf(' ') + 1);
     	String operator = input.substring(0, input.indexOf(' '));
     	input = input.substring(input.indexOf(' ') + 1);
-    	String secondOperand = input;  
-    	return input;
+    	String secondOperand = input; 
+    	
+    	String secondOperandW = findWhole(operand2);
+    	String secondOperandN = findNum(operand2);
+    	String secondOperandD = findDem(operand2);
+    	return "whole" + secondOperandW + "numerator: " + secondOperandN
+    	+ "denominator: " + secondOperandD;
+ 
     }
     // TODO: Fill in the space below with any helper methods that you think you will need
+    public static String findWhole(String operand) {
+    	
+    	if(operand.contains("_")) {
+    		
+    	}
+    }
 
 }
