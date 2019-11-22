@@ -15,12 +15,13 @@ public class FracCalc {
     	
     	boolean running  = true;
     	System.out.println("Welcome to Frac Calc");
+    	
     	while (running) {
     		System.out.println("Please enter a value followed by an arithmatic operator and another value:");
     		String userInput = scanner.nextLine(); 
     		System.out.print(".\n.\n.\n" );
     		System.out.println("The answer is " + produceAnswer(userInput));
-    		
+
     	}
 
     }
@@ -41,19 +42,46 @@ public class FracCalc {
     	input = input.substring(input.indexOf(' ') + 1);
     	String secondOperand = input; 
     	
-    	String secondOperandW = findWhole(operand2);
-    	String secondOperandN = findNum(operand2);
-    	String secondOperandD = findDem(operand2);
-    	return "whole" + secondOperandW + "numerator: " + secondOperandN
-    	+ "denominator: " + secondOperandD;
+    	String secondOperandW = findWhole(secondOperand);
+    	String secondOperandN = findNum(secondOperand);
+    	String secondOperandD = findDem(secondOperand);
+    	return "whole:" + secondOperandW + " numerator:" + secondOperandN
+    	+ " denominator:" + secondOperandD;
  
     }
     // TODO: Fill in the space below with any helper methods that you think you will need
     public static String findWhole(String operand) {
-    	
+    	//3_1/2 19/4 965
     	if(operand.contains("_")) {
-    		
+    		return operand.substring(0, operand.indexOf('_'));
+    	}
+    	
+    	else if(operand.contains("/")) {
+    		return "0";
+    	}
+    	else{
+    		return operand;
+    	}	
+    }
+    
+    public static String findNum(String operand) {
+    	if(operand.contains("_")) {
+    		return operand.substring(operand.indexOf('_') + 1, operand.indexOf('/'));
+    	}
+    	else if(operand.contains("/")) {
+    		return operand.substring(0, operand.indexOf('/'));
+    	}
+    	else {
+    		return "0";
     	}
     }
-
+    
+    public static String findDem(String operand) {
+    	if(operand.contains("/")) {
+    		return operand.substring(operand.indexOf('/') + 1);
+    	}
+    	else {
+    		return "1";
+    	}
+    }
 }
