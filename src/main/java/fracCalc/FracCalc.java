@@ -13,15 +13,15 @@ public class FracCalc {
     public static void main(String[] args)
     {
     	
-    	boolean running  = true;
     	System.out.println("Welcome to Frac Calc");
-    	
-    	while (running) {
-    		System.out.println("Please enter a value followed by an arithmatic operator and another value:");
-    		String userInput = scanner.nextLine(); 
-    		System.out.print(".\n.\n.\n" );
+    	System.out.println("Please enter a value followed by an arithmatic operator and another value:");
+		System.out.print(".\n.\n.\n" );
+		String userInput = scanner.nextLine(); 
+    	while (!userInput.equalsIgnoreCase("quit")) {
     		System.out.println("The answer is " + produceAnswer(userInput));
-
+        	System.out.println("Please enter a value followed by an arithmatic operator and another value:");
+        	System.out.print(".\n.\n.\n" );
+        	userInput = scanner.nextLine(); 
     	}
 
     }
