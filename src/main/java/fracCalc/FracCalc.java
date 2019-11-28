@@ -23,6 +23,7 @@ public class FracCalc {
         	System.out.print(".\n.\n.\n" );
         	userInput = scanner.nextLine(); 
     	}
+    	
 
     }
 
@@ -36,19 +37,24 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input) {
     	
+    	//Substring Input
     	String firstOperand = input.substring(0, input.indexOf(' '));
     	input = input.substring(input.indexOf(' ') + 1);
     	String operator = input.substring(0, input.indexOf(' '));
     	input = input.substring(input.indexOf(' ') + 1);
     	String secondOperand = input; 
     	
-    	String secondOperandW = findWhole(secondOperand);
-    	String secondOperandN = findNum(secondOperand);
-    	String secondOperandD = findDem(secondOperand);
-    	return "whole:" + secondOperandW + " numerator:" + secondOperandN
-    	+ " denominator:" + secondOperandD;
- 
+    	//Separate into whole, num, dem
+    	String firstW = findWhole(firstOperand);
+    	String firstN = findNum(firstOperand);
+    	String firstD = findDem(firstOperand);
+    	
+    	String secondW = findWhole(secondOperand);
+    	String secondN = findNum(secondOperand);
+    	String secondD = findDem(secondOperand);
+    	
     }
+    
     // TODO: Fill in the space below with any helper methods that you think you will need
     public static String findWhole(String operand) {
     	//3_1/2 19/4 965
@@ -83,5 +89,24 @@ public class FracCalc {
     	else {
     		return "1";
     	}
+    }
+    
+    //
+    public static double simplify(String whole, String num, String dem) {
+    	
+    }
+    
+    //operation methods
+    public static double add(double num1, double num2) {
+    	return num1 + num2;
+    }
+    public static double subtract(double num1, double num2) {
+    	return num1 - num2;
+    }
+    public static double multiply(double num1, double num2) {
+    	return num1 * num2;
+    }
+    public static double divide(double num1, double num2) {
+    	return num1 / num2;
     }
 }
