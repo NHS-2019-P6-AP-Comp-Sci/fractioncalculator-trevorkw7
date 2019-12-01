@@ -35,24 +35,41 @@ public class FracCalc {
     //
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String input) {
+    public static double produceAnswer(String input) {
     	
+    	double finalAnswer;
     	//Substring Input
-    	String firstOperand = input.substring(0, input.indexOf(' '));
+    	String firstOperandS = input.substring(0, input.indexOf(' '));
     	input = input.substring(input.indexOf(' ') + 1);
     	String operator = input.substring(0, input.indexOf(' '));
     	input = input.substring(input.indexOf(' ') + 1);
-    	String secondOperand = input; 
+    	String secondOperandS = input; 
     	
     	//Separate into whole, num, dem
-    	String firstW = findWhole(firstOperand);
-    	String firstN = findNum(firstOperand);
-    	String firstD = findDem(firstOperand);
+    	String firstW = findWhole(firstOperandS);
+    	String firstN = findNum(firstOperandS);
+    	String firstD = findDem(firstOperandS);
     	
-    	String secondW = findWhole(secondOperand);
-    	String secondN = findNum(secondOperand);
-    	String secondD = findDem(secondOperand);
+    	String secondW = findWhole(secondOperandS);
+    	String secondN = findNum(secondOperandS);
+    	String secondD = findDem(secondOperandS);
     	
+    	//Operate on simplified operands
+    	double firstOperand = simplify(firstW, firstN, firstD);
+    	double secondOperand = simplify(secondW, secondN, secondD);
+    	if(operator.equals("+")) {
+    		finalAnswer = add(firstOperand, secondOperand);
+    	}
+    	else if(operator.equals(" -")) {
+    		finalAnswer = subtract(firstOperand, secondOperand);
+    	}
+    	else if(operator.equals("*")) {
+    		finalAnswer = multiply(firstOperand, secondOperand);
+    	}
+    	else {
+    		finalAnswer = divide(firstOperand, secondOperand);
+    	}
+    	return finalAnswer;
     }
     
     // TODO: Fill in the space below with any helper methods that you think you will need
@@ -93,7 +110,10 @@ public class FracCalc {
     
     //
     public static double simplify(String whole, String num, String dem) {
-    	
+    	double wholeD = Double.valueOf(whole); 
+    	double numD = Double.valueOf(num); 
+    	double demD = Double.valueOf(dem);
+    	return wholeD + numD / demD;
     }
     
     //operation methods
