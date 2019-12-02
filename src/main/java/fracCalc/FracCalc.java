@@ -35,7 +35,7 @@ public class FracCalc {
     //
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static double produceAnswer(String input) {
+    public static String produceAnswer(String input) {
     	
     	double finalAnswer;
     	//Substring Input
@@ -69,7 +69,7 @@ public class FracCalc {
     	else {
     		finalAnswer = divide(firstOperand, secondOperand);
     	}
-    	return finalAnswer;
+    	return Double.toString(finalAnswer);
     }
     
     // TODO: Fill in the space below with any helper methods that you think you will need
